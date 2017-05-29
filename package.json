@@ -1,0 +1,30 @@
+{
+  "name": "scrapey-mc-scrapeface",
+  "version": "1.0.0",
+  "description": "Scrapes some news articles",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodingKaiser/scrapey-mc-scrapeface.git"
+  },
+  "keywords": [
+    "scrape"
+  ],
+  "author": "Falko Julian Noe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CodingKaiser/scrapey-mc-scrapeface/issues"
+  },
+  "homepage": "https://github.com/CodingKaiser/scrapey-mc-scrapeface#readme",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "cheerio": "^0.22.0",
+    "express": "^4.15.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.10.2",
+    "request": "^2.81.0"
+  }
+}
