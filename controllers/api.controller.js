@@ -55,9 +55,8 @@ module.exports.scrapeArticles = async (req, res) => {
       }
     })
   });
+}
 
-  // Article.update({headline: "This is a test"}, {link: "http://www.zeit.de/politik/ausland/2017-05/emmanuel-macron-wladimir-putin-angela-merkel"}, {upsert: true}, (err, raw) => {
-  //   if (err) console.log(err)
-  //   console.log(raw)
-  // })
+module.exports.postComment = async (req, res) => {
+  const comment = req.body
 }
