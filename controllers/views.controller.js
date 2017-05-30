@@ -7,7 +7,7 @@ module.exports.home = async (req, res) => {
 }
 
 module.exports.saved = async (req, res) => {
-  Article.find({}).limit(10).sort({ date: 1 }).exec((err, found) => {
+  Article.find({}).limit(20).sort({ _id: -1 }).exec((err, found) => {
     if (err) {
       console.log(err)
     } else {
