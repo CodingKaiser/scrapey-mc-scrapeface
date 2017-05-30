@@ -19,10 +19,23 @@
 		    <ul id="nav-mobile" class="left hide-on-med-and-down">
 		      <li><a href="/">Home</a></li>
 		      <li><a href="/saved">Saved Articles</a></li>
-		      <a id="scrape-btn" class="waves-effect waves-light btn">Launch Yourself Into Space</a>
+		      <button id="scrape-btn" data-target="confirm-modal" class="waves-effect waves-light btn">Scrape zeit.de</button>
 		    </ul>
 		  </div>
 		</nav>
+	  <!-- Modal Structure -->
+	  <div id="confirm-modal" class="modal">
+	    <div class="modal-content">
+	      <h4 id="modal-header">Scraping Zeit.de...</h4>
+	      <p id="modal-contents">Please wait...</p>
+				<div id="modal-progress-bar" class="progress">
+						<div class="indeterminate"></div>
+				</div>
+	    </div>
+	    <div class="modal-footer">
+	      <a id="go-to-saved-btn" href="/saved" class="btn-flat disabled">Take Me To Articles</a>
+	    </div>
+	  </div>
 		{{{ body }}}
 	  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 		<script src="assets/js/nav.js" type="text/javascript"></script>

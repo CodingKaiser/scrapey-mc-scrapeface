@@ -47,8 +47,12 @@ module.exports.scrapeArticles = async (req, res) => {
     });
     console.log(JSON.stringify(articles, null, 2))
     Article.bulkWrite(articles, (error, bulkWriteOpResult) => {
-      if (error) console.log(error)
-      console.log(bulkWriteOpResult)
+      if (error) {
+        console.log(error)
+      } else {
+        console.log(bulkWriteOpResult)
+        res.json(bulkWriteOpResult)
+      }
     })
   });
 

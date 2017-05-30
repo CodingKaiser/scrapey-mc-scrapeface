@@ -7,5 +7,12 @@ module.exports.home = async (req, res) => {
 }
 
 module.exports.saved = async (req, res) => {
-  res.render("articles", {})
+  Article.find({}).limit(10).sort({ date: 1 }).exec((err, found) => {
+    if (err) {
+      console.log(err)
+    } else {
+      console.log(JSON.stringify(found, null, 2))
+      res.render("articles", found)
+    }
+  })
 }
