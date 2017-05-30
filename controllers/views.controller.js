@@ -12,7 +12,7 @@ module.exports.saved = async (req, res) => {
       console.log(err)
     } else {
       console.log(JSON.stringify(found, null, 2))
-      res.render("articles", found)
+      res.render("articles", { articles: found })
     }
   })
 }
