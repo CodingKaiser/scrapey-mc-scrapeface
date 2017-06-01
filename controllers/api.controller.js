@@ -1,16 +1,27 @@
 // Import the model to use its database functions.
 var Article = require("../models/article.js")
+var Comment = require("../models/comment.js")
 const request = require("request")
 const cheerio = require("cheerio")
 const urlToScrape = 'http://www.zeit.de/politik/index'
 
 // Create all our routes and set up logic within those routes where required.
 module.exports.getArticle = async (req, res) => {
-  Article.find({}, (err, found) => {
+  Article.find({}).populate('_article', (err, found) => {
     if (err) {
       console.log(err)
     } else {
       res.json(found)
+    }
+  })
+}
+
+module.exports.getComments = async (req, res) => {
+  Comment.find({}).populate('_article', (err, comments) => {
+    if (err) {
+      console.log(err)
+    } else {
+      res.json(comments)
     }
   })
 }
@@ -58,5 +69,15 @@ module.exports.scrapeArticles = async (req, res) => {
 }
 
 module.exports.postComment = async (req, res) => {
-  const comment = req.body
+  var newComment = new Comment(req.body)
+  console.log(req.body)
+  let articleId = req.body['_article']
+  newComment.save((err) => {
+    if (err) console.log(err)
+    Article.findById(articleId, (err, art) => {
+      if (err) console.log(err)
+      console.log(art)
+      art.comments.push(newComment._id)
+    })
+  })
 }
