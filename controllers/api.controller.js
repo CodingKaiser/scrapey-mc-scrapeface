@@ -7,7 +7,7 @@ const urlToScrape = 'http://www.zeit.de/politik/index'
 
 // Create all our routes and set up logic within those routes where required.
 module.exports.getArticle = async (req, res) => {
-  Article.find({}).populate('_article', (err, found) => {
+  Article.find({}).populate('comments').exec((err, found) => {
     if (err) {
       console.log(err)
     } else {
@@ -17,7 +17,7 @@ module.exports.getArticle = async (req, res) => {
 }
 
 module.exports.getComments = async (req, res) => {
-  Comment.find({}).populate('_article', (err, comments) => {
+  Comment.find({}).populate('_article').exec((err, comments) => {
     if (err) {
       console.log(err)
     } else {
@@ -74,10 +74,10 @@ module.exports.postComment = async (req, res) => {
   let articleId = req.body['_article']
   newComment.save((err) => {
     if (err) console.log(err)
-    Article.findById(articleId, (err, art) => {
-      if (err) console.log(err)
-      console.log(art)
-      art.comments.push(newComment._id)
-    })
+    Article.update({ "_id": articleId }, {$push: { "comments": newComment._id }}, (err, numAffected) => {
+      if(err) console.log(err)
+      else {
+        //do something depending on the number of documents affected
+      }});
   })
 }
