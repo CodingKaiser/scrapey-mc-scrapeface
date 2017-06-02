@@ -8,3 +8,4 @@ module.exports = router
   .get('/comments', apiController.getComments)
   .post('/scrape', apiController.scrapeArticles)
   .post('/comment', apiController.postComment)
+  .delete('/comment', apiController.delComment)

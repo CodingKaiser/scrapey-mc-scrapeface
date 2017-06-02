@@ -13,4 +13,19 @@ $(document).ready(function() {
       location.reload()
     })
   })
+
+  $(".del-comment-btn").on("click", function(event) {
+    event.preventDefault()
+    const commentId = $(this).attr("data-comment-id")
+    console.log(commentId)
+    var commentToDel = { commentId: commentId }
+    $.ajax({
+      url: '/api/comment',
+      type: 'DELETE',
+      data: commentToDel
+    }).then(function(response) {
+      console.log(response)
+      location.reload()
+    })
+  })
 })

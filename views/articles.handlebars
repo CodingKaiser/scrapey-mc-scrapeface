@@ -11,9 +11,11 @@
               <div class="collapsible-header"><i class="material-icons">filter_drama</i>Comments</div>
               <div class="collapsible-body">
                 {{#if comments}}
+                  <ul class="collection">
                   {{#each comments}}
-
+                    <li class="collection-item" style="overflow: auto;"><strong>Anon wrote:</strong> {{contents}}  <a data-comment-id={{_id}} class="del-comment-btn btn-floating btn-small waves-effect waves-light red" style="float: right"><i class="material-icons">delete</i></a></li>
                   {{/each}}
+                  </ul>
                 {{else}}
                   <span>No comments yet! Be the first to leave one</span>
                 {{/if}}

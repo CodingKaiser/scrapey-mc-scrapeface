@@ -26,6 +26,15 @@ app.set("view engine", "handlebars");
 // Mongoose set-up
 const localDbUrl = 'mongodb://localhost/9-scrape'
 mongoose.connect(process.env.MONGOLAB_URI || localDbUrl)
+var db = mongoose.connection;
+// Log any mongoose errors
+db.on("error", function(error) {
+  console.log("Mongoose Error: ", error);
+});
+// Log a success message when we connect to our mongoDB collection with no issues
+db.once("open", function() {
+  console.log("Mongoose connection successful.");
+});
 
 app.use("/", viewRouter)
 app.use("/api", apiRouter)

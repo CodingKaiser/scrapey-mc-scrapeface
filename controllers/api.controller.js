@@ -81,3 +81,10 @@ module.exports.postComment = async (req, res) => {
       }});
   })
 }
+
+module.exports.delComment = async (req, res) => {
+  Comment.deleteOne({ "_id": req.body.commentId}, (err, result) => {
+    console.log("Deleted comment " + req.body.commentId)
+    console.log(JSON.parse(result))
+  })
+}
