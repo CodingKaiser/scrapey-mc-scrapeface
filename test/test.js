@@ -20,7 +20,9 @@ describe('/GET articles', () => {
       .get('/api/all')
       .end((err, res) => {
         assert.isArray(res.body)
-        assert(Object.keys(res.body).length)
+        if (Object.keys(res.body).length) {
+          assert.isString(res.body[0].headline)
+        }
         done()
       })
   })
@@ -30,13 +32,9 @@ describe('/GET articles', () => {
     .end((err, res) => {
       assert.isArray(res.body)
       if (Object.keys(res.body).length) {
-        console.log(res.body[0])
+        assert.isString(res.body[0].contents)
       }
-      // assert(Object.keys(res.body).length)
       done()
     })
   })
-})
-
-describe('/GET comments', () => {
 })
