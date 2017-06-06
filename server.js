@@ -25,7 +25,8 @@ app.set("view engine", "handlebars");
 
 // Mongoose set-up
 const localDbUrl = 'mongodb://localhost/9-scrape'
-mongoose.connect(process.env.MONGOLAB_URI || localDbUrl)
+mongoose.connect("mongodb://heroku_nzcmzxww:vuss4k2oh07ts9r3gap5a02pi7@ds155841.mlab.com:55841/heroku_nzcmzxww")
+// process.env.MONGOLAB_URI || localDbUrl
 var db = mongoose.connection;
 // Log any mongoose errors
 db.on("error", function(error) {
