@@ -10,7 +10,7 @@ const exphbs = require("express-handlebars");
 const viewRouter = require("./routes/views.routes.js")
 const apiRouter = require("./routes/api.routes.js")
 
-const PORT = 8080
+const PORT = process.env.PORT || 8080
 
 
 // Initialize Express
