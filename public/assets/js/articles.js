@@ -10,7 +10,7 @@ $(document).ready(function() {
     submittedComment['contents'] = commentText
     $.post('/api/comment', submittedComment, function (response) {
       console.log(response)
-      location.reload()
+      location.reload();
     })
   })
 
@@ -25,7 +25,7 @@ $(document).ready(function() {
       data: commentToDel
     }).then(function(response) {
       console.log(response)
-      location.reload()
+      window.location.reload()
     })
   })
 })

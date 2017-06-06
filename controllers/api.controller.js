@@ -77,7 +77,7 @@ module.exports.postComment = async (req, res) => {
     Article.update({ "_id": articleId }, {$push: { "comments": newComment._id }}, (err, numAffected) => {
       if(err) console.log(err)
       else {
-        //do something depending on the number of documents affected
+        res.json(newComment)
       }});
   })
 }
@@ -86,5 +86,6 @@ module.exports.delComment = async (req, res) => {
   Comment.deleteOne({ "_id": req.body.commentId}, (err, result) => {
     console.log("Deleted comment " + req.body.commentId)
     console.log(JSON.parse(result))
+    res.json(result)
   })
 }
