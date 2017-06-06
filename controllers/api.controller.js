@@ -6,7 +6,7 @@ const cheerio = require("cheerio")
 const urlToScrape = 'http://www.zeit.de/politik/index'
 
 // Create all our routes and set up logic within those routes where required.
-module.exports.getArticle = async (req, res) => {
+module.exports.getArticle = (req, res) => {
   Article.find({}).populate('comments').exec((err, found) => {
     if (err) {
       console.log(err)
@@ -16,7 +16,7 @@ module.exports.getArticle = async (req, res) => {
   })
 }
 
-module.exports.getComments = async (req, res) => {
+module.exports.getComments = (req, res) => {
   Comment.find({}).populate('_article').exec((err, comments) => {
     if (err) {
       console.log(err)
@@ -26,7 +26,7 @@ module.exports.getComments = async (req, res) => {
   })
 }
 
-module.exports.scrapeArticles = async (req, res) => {
+module.exports.scrapeArticles = (req, res) => {
   request(urlToScrape, function (error, response, html) {
 
     // Load the HTML into cheerio and save it to a variable
@@ -68,7 +68,7 @@ module.exports.scrapeArticles = async (req, res) => {
   });
 }
 
-module.exports.postComment = async (req, res) => {
+module.exports.postComment = (req, res) => {
   var newComment = new Comment(req.body)
   console.log(req.body)
   let articleId = req.body['_article']
@@ -82,7 +82,7 @@ module.exports.postComment = async (req, res) => {
   })
 }
 
-module.exports.delComment = async (req, res) => {
+module.exports.delComment = (req, res) => {
   Comment.deleteOne({ "_id": req.body.commentId}, (err, result) => {
     console.log("Deleted comment " + req.body.commentId)
     console.log(JSON.parse(result))
