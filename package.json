@@ -26,5 +26,9 @@
     "express-handlebars": "^3.0.0",
     "mongoose": "^4.10.2",
     "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
   }
 }
